@@ -21,6 +21,7 @@ print('\n Letter count: ', len(data))
 
 with open('big_data.txt', 'r') as text:
     all_words = []
+    all_letters = []
     counter = 0 
     ltr = 0
     for line in text:
@@ -30,8 +31,16 @@ with open('big_data.txt', 'r') as text:
             word = clp.clean(word)
             ltr = ltr + len(word)
             all_words.append(word)
+            for letter in word:
+                all_letters.append(letter)
             
             
 print('Word Count : ' , len(all_words))
 print('Letter Count : ', ltr)
 
+print(all_letters)
+
+df = pd.DataFrame(all_letters)
+
+count= df.value_counts()
+print(count)
